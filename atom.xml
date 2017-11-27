@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[LoveAria]]></title>
+  <link href="http://lovearia.me/atom.xml" rel="self"/>
+  <link href="http://lovearia.me/"/>
+  <updated>2017-11-28T01:22:19+08:00</updated>
+  <id>http://lovearia.me/</id>
+  <author>
+    <name><![CDATA[]]></name>
+    
+  </author>
+  <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[Mweb 自动发布脚本]]></title>
+    <link href="http://lovearia.me/15118019397838.html"/>
+    <updated>2017-11-28T00:58:59+08:00</updated>
+    <id>http://lovearia.me/15118019397838.html</id>
+    <content type="html"><![CDATA[
+<p>本博客是使用 Mweb 这个 markdown 文本编辑器自动生成的。Mweb 为了上架苹果 Apple Store，而限制了自动发布脚本的自运行。而只能做到打开 terminal，以及将发布脚本复制到剪贴板。</p>
+
+<p>嗯……剪贴板，那我只需要通过 terminal 打开时 bash / zsh 的配置脚本来检测剪贴板，并且自动执行，那不就相当于自动一键发布了嘛！</p>
+
+<p>记录一下自己折腾的黑科技：</p>
+
+<pre><code class="language-Bash">if (pbpaste  | grep -Eq  &#39;^cd &quot;[^&quot;]*&quot; &amp;&amp; sh &quot;[^&quot;]*/site_publish_logs/sh_\d*\.sh&quot; &amp;&amp; open &quot;&quot;&#39;) 
+then
+    echo &quot;========== MWEB AUTO PUBLISH START ==========&quot; 
+    echo &quot;Runing command:&quot;
+    pbpaste
+
+    if pbpaste | sh
+    then
+
+        echo &quot;Success!&quot;
+        echo &quot;Clean pasteboard...&quot;
+        echo -n &quot;&quot; | pbcopy
+        echo &quot;==========  MWEB AUTO PUBLISH END  ==========&quot;
+        echo &quot;Close terminal 5s later...&quot;
+        sleep 5
+        exit
+
+    else
+
+        echo &quot;Failed!&quot;
+        echo &quot;Clean pasteboard...&quot;
+        echo -n &quot;&quot; | pbcopy
+        echo &quot;==========  MWEB AUTO PUBLISH END  ==========&quot;
+
+    fi
+
+fi
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[博客又开了]]></title>
+    <link href="http://lovearia.me/15116935172675.html"/>
+    <updated>2017-11-26T18:51:57+08:00</updated>
+    <id>http://lovearia.me/15116935172675.html</id>
+    <content type="html"><![CDATA[
+<p>博客又开了，只不过之前的内容都已经不在了。不想再折腾博客系统了，现在干脆就用现成的静态博客生成器就够了。好好歇歇文章记录记录心得体会啥的就够了。</p>
+
+<p>不想在知乎上写的东西就在这里写着玩吧。</p>
+
+]]></content>
+  </entry>
+  
+</feed>
