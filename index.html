@@ -122,6 +122,61 @@
 	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
 		<div class="meta">
 			<div class="date">
+				<time datetime="2017-11-28T00:58:59+08:00" itemprop="datePublished">2017/11/28</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15118019397838.html" itemprop="url">
+		Mweb 自动发布脚本</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>本博客是使用 Mweb 这个 markdown 文本编辑器自动生成的。Mweb 为了上架苹果 Apple Store，而限制了自动发布脚本的自运行。而只能做到打开 terminal，以及将发布脚本复制到剪贴板。</p>
+
+<p>嗯……剪贴板，那我只需要通过 terminal 打开时 bash / zsh 的配置脚本来检测剪贴板，并且自动执行，那不就相当于自动一键发布了嘛！</p>
+
+<p>记录一下自己折腾的黑科技：</p>
+
+<pre><code class="language-Bash">if (pbpaste  | grep -Eq  &#39;^cd &quot;[^&quot;]*&quot; &amp;&amp; sh &quot;[^&quot;]*/site_publish_logs/sh_\d*\.sh&quot; &amp;&amp; open &quot;&quot;&#39;) 
+then
+    echo &quot;========== MWEB AUTO PUBLISH START ==========&quot; 
+    echo &quot;Runing command:&quot;
+    pbpaste
+
+    if pbpaste | sh
+    then
+
+        echo &quot;Success!&quot;
+        echo &quot;Clean pasteboard...&quot;
+        echo -n &quot;&quot; | pbcopy
+        echo &quot;==========  MWEB AUTO PUBLISH END  ==========&quot;
+        echo &quot;Close terminal 5s later...&quot;
+        sleep 5
+        exit
+
+    else
+
+        echo &quot;Failed!&quot;
+        echo &quot;Clean pasteboard...&quot;
+        echo -n &quot;&quot; | pbcopy
+        echo &quot;==========  MWEB AUTO PUBLISH END  ==========&quot;
+
+    fi
+
+fi
+</code></pre>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
 				<time datetime="2017-11-26T18:51:57+08:00" itemprop="datePublished">2017/11/26</time>
 			</div>
 			
