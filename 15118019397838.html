@@ -125,7 +125,8 @@
 
 <p>记录一下自己折腾的黑科技：</p>
 
-<pre><code class="language-Bash">if (pbpaste  | grep -Eq  &#39;^cd &quot;[^&quot;]*&quot; &amp;&amp; sh &quot;[^&quot;]*/site_publish_logs/sh_\d*\.sh&quot; &amp;&amp; open &quot;&quot;&#39;) 
+<pre><code class="language-Bash">
+if (pbpaste  | grep -Eq  &#39;^cd &quot;[^&quot;]*&quot; &amp;&amp; sh &quot;[^&quot;]*/site_publish_logs/sh_\d*\.sh&quot; &amp;&amp; open &quot;[^&quot;]*&quot;&#39;) 
 then
     echo &quot;========== MWEB AUTO PUBLISH START ==========&quot; 
     echo &quot;Runing command:&quot;
