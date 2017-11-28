@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
+
   <title><![CDATA[LoveAria]]></title>
   <link href="http://lovearia.me/atom.xml" rel="self"/>
   <link href="http://lovearia.me/"/>
-  <updated>2017-11-29T00:28:02+08:00</updated>
+  <updated>2017-11-29T00:32:12+08:00</updated>
   <id>http://lovearia.me/</id>
   <author>
     <name><![CDATA[]]></name>
+    
   </author>
-  <generator uri="http://www.coderforart.com/">CoderForArt</generator>
+  <generator uri="http://www.mweb.im/">MWeb</generator>
   
   <entry>
     <title type="html"><![CDATA[原来在计算机里，确定性的计算，也那么难]]></title>
     <link href="http://lovearia.me/15118771887233.html"/>
     <updated>2017-11-28T21:53:08+08:00</updated>
     <id>http://lovearia.me/15118771887233.html</id>
-    <content type="html">
-<![CDATA[<p>最近我们在做一个 2D 多人对战游戏，为了节省流量带宽以及提高实时性，我们选择了用帧同步，并且只同步一帧中每个玩家的输入，让后由服务器、哥哥玩家手机分别计算。</p>
+    <content type="html"><![CDATA[
+<p>最近我们在做一个 2D 多人对战游戏，为了节省流量带宽以及提高实时性，我们选择了用帧同步，并且只同步一帧中每个玩家的输入，让后由服务器、哥哥玩家手机分别计算。</p>
 
 <p>同一套 c艹 代码写出来的引擎，同样的输入，又没有随机数，最后结果肯定是一毛一样的对不对？肯定是一样的吧？然而事与愿违，结果就是同一局游戏，大家一开都一样，但是玩着玩着大家就变成各玩各的了，每一个玩家看到的都是自己队友和对手都在疯狂旋转跳跃闭着眼，怼墙怼家怼队友。大家从一局游戏变成了各玩各的。很显然，问题出现了，出现在了本应该运算出一样结果的代码，为什么算着算着就不一样了？</p>
 
@@ -43,8 +45,8 @@
 <h2 id="toc_3">后记</h2>
 
 <p>通过努力，现在新的东西碰撞和运算已经在 arm / intel 下进行复杂的测试最终表现出一致的结果了。哎，采坑经历又丰富了。</p>
-]]>
-    </content>
+
+]]></content>
   </entry>
   
   <entry>
@@ -52,8 +54,8 @@
     <link href="http://lovearia.me/15118019397838.html"/>
     <updated>2017-11-28T00:58:59+08:00</updated>
     <id>http://lovearia.me/15118019397838.html</id>
-    <content type="html">
-<![CDATA[<p>本博客是使用 Mweb 这个 markdown 文本编辑器自动生成的。Mweb 为了上架苹果 Apple Store，而限制了自动发布脚本的自运行。而只能做到打开 terminal，以及将发布脚本复制到剪贴板。</p>
+    <content type="html"><![CDATA[
+<p>本博客是使用 Mweb 这个 markdown 文本编辑器自动生成的。Mweb 为了上架苹果 Apple Store，而限制了自动发布脚本的自运行。而只能做到打开 terminal，以及将发布脚本复制到剪贴板。</p>
 
 <p>嗯……剪贴板，那我只需要通过 terminal 打开时 bash / zsh 的配置脚本来检测剪贴板，并且自动执行，那不就相当于自动一键发布了嘛！</p>
 
@@ -88,8 +90,8 @@ then
 
 fi
 </code></pre>
-]]>
-    </content>
+
+]]></content>
   </entry>
   
   <entry>
@@ -97,12 +99,12 @@ fi
     <link href="http://lovearia.me/15116935172675.html"/>
     <updated>2017-11-26T18:51:57+08:00</updated>
     <id>http://lovearia.me/15116935172675.html</id>
-    <content type="html">
-<![CDATA[<p>博客又开了，只不过之前的内容都已经不在了。不想再折腾博客系统了，现在干脆就用现成的静态博客生成器就够了。好好歇歇文章记录记录心得体会啥的就够了。</p>
+    <content type="html"><![CDATA[
+<p>博客又开了，只不过之前的内容都已经不在了。不想再折腾博客系统了，现在干脆就用现成的静态博客生成器就够了。好好歇歇文章记录记录心得体会啥的就够了。</p>
 
 <p>不想在知乎上写的东西就在这里写着玩吧。</p>
-]]>
-    </content>
+
+]]></content>
   </entry>
   
 </feed>
