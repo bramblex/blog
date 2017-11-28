@@ -114,37 +114,6 @@
 
 <p>嗯……剪贴板，那我只需要通过 terminal 打开时 bash / zsh 的配置脚本来检测剪贴板，并且自动执行，那不就相当于自动一键发布了嘛！</p>
 
-<p>记录一下自己折腾的黑科技：</p>
-
-<pre><code class="language-Bash">
-if (pbpaste  | grep -Eq  &#39;^cd &quot;[^&quot;]*&quot; &amp;&amp; sh &quot;[^&quot;]*/site_publish_logs/sh_\d*\.sh&quot; &amp;&amp; open &quot;[^&quot;]*&quot;&#39;) 
-then
-    echo &quot;========== MWEB AUTO PUBLISH START ==========&quot; 
-    echo &quot;Runing command:&quot;
-    pbpaste
-
-    if pbpaste | sh
-    then
-
-        echo &quot;Success!&quot;
-        echo &quot;Clean pasteboard...&quot;
-        echo -n &quot;&quot; | pbcopy
-        echo &quot;==========  MWEB AUTO PUBLISH END  ==========&quot;
-        echo &quot;Close terminal 5s later...&quot;
-        sleep 5
-        exit
-
-    else
-
-        echo &quot;Failed!&quot;
-        echo &quot;Clean pasteboard...&quot;
-        echo -n &quot;&quot; | pbcopy
-        echo &quot;==========  MWEB AUTO PUBLISH END  ==========&quot;
-
-    fi
-
-fi
-</code></pre>
 
                         
                       </div>
@@ -152,7 +121,7 @@ fi
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
+                   <a href="15118019397838.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2017/11/28</span>
                     <span>posted in&nbsp;</span> 
           				  
