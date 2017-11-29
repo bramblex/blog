@@ -505,7 +505,7 @@ font-family: "PT Sans", "SF UI Display", ".PingFang SC","PingFang SC", "Neue Haa
   color: #777;
 }
 
-.markdown-body p{
+.markdown-body .article-content p{
   text-indent:2em;
 }
 
