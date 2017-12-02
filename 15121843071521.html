@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Mweb 自动发布脚本 - LoveAria
+  近似解 - LoveAria
   
   </title>
   
@@ -103,14 +103,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>Mweb 自动发布脚本</h1>
+          <h1>近似解</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2017/11/28</span>
+          <span class="date">2017/12/2</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='shellscript.html'>shellscript</a></span>
+              <span class="posted-in"><a href='%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88.html'>技术杂谈</a></span>
            
          
           <span class="comments">
@@ -123,43 +123,15 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>本博客是使用 Mweb 这个 markdown 文本编辑器自动生成的。Mweb 为了上架苹果 Apple Store，而限制了自动发布脚本的自运行。而只能做到打开 terminal，以及将发布脚本复制到剪贴板。</p>
+      <p>在学校做数学题，题目我要求一个方程的根，所以我一定要求出来这个准确的值。我能求出来这个准确的数字就能得100分，不能求出来就是0分。如果准确答案是\( \sqrt{2} \)，哪怕我写 1.414 也是会给我0分。</p>
 
-<p>嗯……剪贴板，那我只需要通过 terminal 打开时 bash / zsh 的配置脚本来检测剪贴板，并且自动执行，那不就相当于自动一键发布了嘛！</p>
+<p>这就是我们从小被培养出来的思维习惯，同时也被带到了以后现实的工作当中。然而在现实生活中，达到<strong>准确</strong>这两个字的难度是难以想象的高，所有的客观事物都会成为到达这个完美 \( \sqrt{2} \) 的阻碍。</p>
 
-<span id="more"></span><!-- more -->
+<p>但是，1.414 就没有意义了吗？那我们换一种问法，一个问题虽然不能完全解决，那解决到 90% 有没有意义？或者一个问题，我有 90% 的概率解决它这有没有意义。或者再具体一点，一个项目某一项开支我们希望省掉，但是我们没有办法完全省掉，只能省掉 90%。或者有一样新药可以治疗某一种疾病，但是只对 90% 的有效。那这样有没有意义呢？</p>
 
-<p>记录一下自己折腾的黑科技：</p>
+<p>这就是 1.414 所代表的意义。在达不到完美的时候，不完美同样的有意义的。在难以拿到准确解的时候，近似解一样是有效果的。</p>
 
-<pre><code class="language-Bash">
-if (pbpaste  | grep -Eq  &#39;^cd &quot;[^&quot;]*&quot; &amp;&amp; sh &quot;[^&quot;]*/site_publish_logs/sh_\d*\.sh&quot; &amp;&amp; open &quot;[^&quot;]*&quot;&#39;) 
-then
-    echo &quot;========== MWEB AUTO PUBLISH START ==========&quot; 
-    echo &quot;Runing command:&quot;
-    pbpaste
-
-    if pbpaste | sh
-    then
-
-        echo &quot;Success!&quot;
-        echo &quot;Clean pasteboard...&quot;
-        echo -n &quot;&quot; | pbcopy
-        echo &quot;==========  MWEB AUTO PUBLISH END  ==========&quot;
-        echo &quot;Close terminal 5s later...&quot;
-        sleep 5
-        exit
-
-    else
-
-        echo &quot;Failed!&quot;
-        echo &quot;Clean pasteboard...&quot;
-        echo -n &quot;&quot; | pbcopy
-        echo &quot;==========  MWEB AUTO PUBLISH END  ==========&quot;
-
-    fi
-
-fi
-</code></pre>
+<p>\([\sqrt{2} - 1.14, ]\)</p>
 
 
     
@@ -170,16 +142,13 @@ fi
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15118771887233.html" 
-          title="Previous Post: 原来在计算机里，确定性的计算，也那么难">&laquo; 原来在计算机里，确定性的计算，也那么难</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15116935172675.html" 
-          title="Next Post: 博客又开了">博客又开了 &raquo;</a>
+          <a  href="15118771887233.html" 
+          title="Next Post: 原来在计算机里，确定性的计算，也那么难">原来在计算机里，确定性的计算，也那么难 &raquo;</a>
       
       </p>
         </div>
