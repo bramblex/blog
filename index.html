@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  LoveAria
+  LoveAria.me
   
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="LoveAria" type="application/atom+xml">
+  <link href="atom.xml" rel="alternate" title="LoveAria.me" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
@@ -40,11 +40,9 @@
       <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
         <ul id="main-menu" class="left">
         
-        <li id=""><a target="_self" href="index.html">Home</a></li>
+        <li id=""><a target="self" href="index.html">Home</a></li>
         
         <li id=""><a target="_self" href="archives.html">Archives</a></li>
-        
-        <li id=""><a target="_blank" href="http://github.com/bramblex">Github</a></li>
         
         </ul>
 
@@ -64,7 +62,7 @@
 
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; LoveAria</span>
+    <span> &nbsp; LoveAria.me</span>
   </a>
 </nav>
 
@@ -77,10 +75,6 @@
 
     <li><label>Categories</label></li>
 
-        
-            <li><a href="shellscript.html">shellscript</a></li>
-        
-            <li><a href="%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88.html">技术杂谈</a></li>
          
 
       </ul>
@@ -103,23 +97,14 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15121843071521.html">
+                <a class="clearlink" href="15162036596065.html">
                 
-                  <h1>近似解</h1>
+                  <h1>第一篇博客</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>在学校做数学题，题目我要求一个方程的根，所以我一定要求出来这个准确的值。我能求出来这个准确的数字就能得100分，不能求出来就是0分。如果准确答案是\( \sqrt{2} \)，哪怕我写 1.414 也是会给我0分。</p>
-
-<p>这就是我们从小被培养出来的思维习惯，同时也被带到了以后现实的工作当中。然而在现实生活中，达到<strong>准确</strong>这两个字的难度是难以想象的高，所有的客观事物都会成为到达这个完美 \( \sqrt{2} \) 的阻碍。</p>
-
-<p>但是，1.414 就没有意义了吗？那我们换一种问法，一个问题虽然不能完全解决，那解决到 90% 有没有意义？或者一个问题，我有 90% 的概率解决它这有没有意义。或者再具体一点，一个项目某一项开支我们希望省掉，但是我们没有办法完全省掉，只能省掉 90%。或者有一样新药可以治疗某一种疾病，但是只对 90% 的有效。那这样有没有意义呢？</p>
-
-<p>这就是 1.414 所代表的意义。在达不到完美的时候，不完美同样具有意义的。在难以拿到准确解的时候，近似解一样能够解决很大一部分问题。</p>
-
-<p>\( [\sqrt{2} - 1.414, 1.414-\sqrt{2}] \)， 则代表的就是解决问题的宽度。</p>
-
+                        	
                         
                       </div>
                   </div>
@@ -127,114 +112,7 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2017/12/2</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88.html'>技术杂谈</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15118771887233.html">
-                
-                  <h1>原来确定性的计算那么难</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>最近我们在做一个 2D 多人对战游戏，为了节省流量带宽以及提高实时性，我们选择了用帧同步，并且只同步一帧中每个玩家的输入，让后由服务器、哥哥玩家手机分别计算。</p>
-
-<p>同一套 c艹 代码写出来的引擎，同样的输入，又没有随机数，最后结果肯定是一毛一样的对不对？肯定是一样的吧？然而事与愿违，结果就是同一局游戏，大家一开都一样，但是玩着玩着大家就变成各玩各的了，每一个玩家看到的都是自己队友和对手都在疯狂旋转跳跃闭着眼，怼墙怼家怼队友。大家从一局游戏变成了各玩各的。很显然，问题出现了，出现在了本应该运算出一样结果的代码，为什么算着算着就不一样了？</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15118771887233.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2017/11/28</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88.html'>技术杂谈</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15118019397838.html">
-                
-                  <h1>Mweb 自动发布脚本</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>本博客是使用 Mweb 这个 markdown 文本编辑器自动生成的。Mweb 为了上架苹果 Apple Store，而限制了自动发布脚本的自运行。而只能做到打开 terminal，以及将发布脚本复制到剪贴板。</p>
-
-<p>嗯……剪贴板，那我只需要通过 terminal 打开时 bash / zsh 的配置脚本来检测剪贴板，并且自动执行，那不就相当于自动一键发布了嘛！</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15118019397838.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2017/11/28</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='shellscript.html'>shellscript</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15116935172675.html">
-                
-                  <h1>博客又开了</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>博客又开了，只不过之前的内容都已经不在了。不想再折腾博客系统了，现在干脆就用现成的静态博客生成器就够了。好好歇歇文章记录记录心得体会啥的就够了。</p>
-
-<p>不想在知乎上写的东西就在这里写着玩吧。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/11/26</span>
+                    <span class="date">2018/1/17</span>
                     
           				   
                   </div>
@@ -271,8 +149,8 @@
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <h1>LoveAria</h1>
-                <div class="site-des">OvO 随便写点东西~</div>
+                <h1>LoveAria.me</h1>
+                <div class="site-des">Bramblex虾扯蛋的地方~</div>
                 <div class="social">
 
 
@@ -283,8 +161,8 @@
 
 
 
-<a target="_blank" class="github" target="_blank" href="https://github.com/bramblex" title="GitHub">GitHub</a>
-<a target="_blank" class="email" href="mailto:qjnight@gmail.com" title="Email">Email</a>
+
+
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
               	 </div>
@@ -299,10 +177,6 @@
                 <div class="side-content">
 
       	<p class="cat-list">
-        
-            <a href="shellscript.html"><strong>shellscript</strong></a>
-        
-            <a href="%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88.html"><strong>技术杂谈</strong></a>
          
         </p>
 
@@ -319,25 +193,7 @@
 	      
 		      
 			      <li class="post">
-			        <a href="15121843071521.html">近似解</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15118771887233.html">原来确定性的计算那么难</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15118019397838.html">Mweb 自动发布脚本</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15116935172675.html">博客又开了</a>
+			        <a href="15162036596065.html">第一篇博客</a>
 			      </li>
 		     
 		   
