@@ -4,7 +4,7 @@
   <title><![CDATA[LoveAria.me]]></title>
   <link href="http://lovearia.me/atom.xml" rel="self"/>
   <link href="http://lovearia.me/"/>
-  <updated>2018-01-18T00:11:36+08:00</updated>
+  <updated>2018-01-18T00:17:28+08:00</updated>
   <id>http://lovearia.me/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://www.coderforart.com/">CoderForArt</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[《现在开始学编程》准备计划]]></title>
+    <link href="http://lovearia.me/15162062122434.html"/>
+    <updated>2018-01-18T00:23:32+08:00</updated>
+    <id>http://lovearia.me/15162062122434.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[博客这种东西，还是要写写的]]></title>
