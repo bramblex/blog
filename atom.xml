@@ -4,7 +4,7 @@
   <title><![CDATA[LoveAria.me]]></title>
   <link href="http://lovearia.me/atom.xml" rel="self"/>
   <link href="http://lovearia.me/"/>
-  <updated>2018-01-22T03:58:11+08:00</updated>
+  <updated>2018-01-22T03:59:00+08:00</updated>
   <id>http://lovearia.me/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -13,7 +13,7 @@
   <generator uri="http://www.mweb.im/">MWeb</generator>
   
   <entry>
-    <title type="html"><![CDATA[递归大法好，30 行代码为你的 Markdown 生成目录树]]></title>
+    <title type="html"><![CDATA[递归大法好，30 行代码为 Markdown 生成目录树]]></title>
     <link href="http://lovearia.me/15165536164013.html"/>
     <updated>2018-01-22T00:53:36+08:00</updated>
     <id>http://lovearia.me/15165536164013.html</id>
