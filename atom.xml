@@ -4,13 +4,369 @@
   <title><![CDATA[LoveAria.me]]></title>
   <link href="http://lovearia.me/atom.xml" rel="self"/>
   <link href="http://lovearia.me/"/>
-  <updated>2018-01-18T01:48:23+08:00</updated>
+  <updated>2018-01-18T01:51:28+08:00</updated>
   <id>http://lovearia.me/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[递归大法好，30 行代码为你的 Markdown 生成目录树]]></title>
+    <link href="http://lovearia.me/15165536164013.html"/>
+    <updated>2018-01-22T00:53:36+08:00</updated>
+    <id>http://lovearia.me/15165536164013.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">目录</h2>
+
+<ul>
+<li>
+<a href="#toc_0">目录</a>
+</li>
+<li>
+<a href="#toc_1">前言</a>
+</li>
+<li>
+<a href="#toc_2">第一步、提取标题</a>
+</li>
+<li>
+<a href="#toc_3">第二步、生成目录树</a>
+</li>
+<li>
+<a href="#toc_4">第三步、生成 Markdown 语法的嵌套结构目录树</a>
+</li>
+<li>
+<a href="#toc_5">其他骚操作</a>
+</li>
+<li>
+<a href="#toc_6">后语</a>
+</li>
+<li>
+<a href="#toc_7">附：完整代码</a>
+</li>
+</ul>
+
+
+<h2 id="toc_1">前言</h2>
+
+<p>本以为我的博客程序是没有 <code>[TOC]</code> 这样东西来自动生成目录树的，都已经把代码写好了，一看文档就懵逼了。原来文档最后一条写明了，<code>[TOC]</code> 以及其用法，是我自己没好好看文档，心痛。</p>
+
+<p>不过既然写完了，那就把原理分享出来吧，反正也就 30 行代码。千万别钻牛角尖跟我说超过了 30 行，你硬是觉得括号占一行也算行的话我也没办法。</p>
+
+<h2 id="toc_2">第一步、提取标题</h2>
+
+<p>既然要为 Markdown 生成目录树，那么第一个步骤就是提取 Markdown 中的所有标题。因为 Markdown 本身语法非常简单，由若各个 <code>#</code> 符号开头，所以可以用一个正则表达式 <code>/^(#+)[ \t](.*)$/</code> 进行匹配提取。<code>(#+)</code> 用来提取是第几级的标题，<code>(.*)</code> 用来提取出具体标题内容。因为很多 Markdown 实现里面都要求标题的 <code>#</code> 符号后面要跟空格或者 tab 来进行分隔，所以我们也按照这样的标准，用 <code>[ \t]+</code> 来强制要求至少有一个空格或者 tab 进行分隔。</p>
+
+<p>下面这个 getHeaders 就是用来提取一个 Markdown 里面标题的，具体过程如下:</p>
+
+<ol>
+<li>将 Markdown 文件用 <code>split(&#39;\n&#39;)</code> 分成一个行数组。</li>
+<li>将行数组里面的每一行用 <code>/^(#+)[ \t](.*)$/</code> 进行匹配和提取标题。</li>
+<li>过滤掉不匹配的行。</li>
+<li>最后将提取出来的字符整理成一个级数和标题的对象。</li>
+</ol>
+
+<pre><code class="language-JavaScript">const getHeaders = text =&gt;
+    text
+        .split(&#39;\n&#39;)
+        .map(line =&gt; line.match(/^(#+)[ \t]+(.*)$/))
+        .filter(header =&gt; header !== null)
+        .map(([, prefix, title]) =&gt; ({ level: prefix.length, title }))
+</code></pre>
+
+<blockquote>
+<p>getHeaders 函数会提取出一个 Markdown 文件里面所有的标题信息，这个标题信息里面包含了标题的级数和标题内容。</p>
+</blockquote>
+
+<h2 id="toc_3">第二步、生成目录树</h2>
+
+<p>经过第一步提取过，我们就得到了一个标题列表，但是光有标题列表是不行的，我们希望得到的是一个目录树。直射后我们就需要把一个铺平的标题列表折叠成一个目录树。不过这样要怎么做呢？</p>
+
+<p>大家都听过或者玩过“汉诺塔”这个游戏吧？大家在刚学习编程的时候，当老师或者书本讲到“递归”这个概念的时候，往往都会以汉诺塔这个游戏作为例子。我们人在解汉诺塔这个问题的时候还是挺复杂的，但是对于计算机来说，解决汗汉诺塔问题只需要三步。</p>
+
+<pre><code>   #
+  ###
+ #####
+#######
+-------   -------   -------
+
+第一步：
+
+             #
+            ###
+#######    #####
+-------   -------   -------
+  
+第二步：
+
+             #
+            ###
+           #####    #######
+-------   -------   -------
+
+第三步：
+                       #
+                      ###
+                     #####
+                    #######
+-------   -------   -------
+</code></pre>
+
+<p>玩过汉诺塔的小伙伴一定会想说：“麻麻！它犯规！”。但其实计算机里面解汉诺塔就是那么简单的步骤，这里面涉及到一个是“递归”的思想，另一个其实非常著名也是非常常用到算法设计思想——分治。分治分治，就是分而治之的意思，将一个复杂的问题不断分解成多个简单的小问题的一种思想。如果你把顶上三个当成一块，然后递归对上面的块运用相同的算法，最后就能得到我们想要的结果了。</p>
+
+<p>现在回到我们生成目录树的例子来，同样，甚至比汉诺塔更简单，只需要两步。</p>
+
+<ol>
+<li>获取第一个标题，令为 parent。</li>
+<li>从 parent 节点后一个节点开始，将连续比 parent 节点层级低的节点组成的列表令为 children。</li>
+<li>对 children 重复本算法，并赋值给 parent.children 属性。</li>
+<li>对剩余的节点组成的列表重复本算法。</li>
+</ol>
+
+<pre><code>以下是一个标题列表
+[
+    # header1,
+    ## header2,
+    ### header3,
+
+    # header1,
+    ## header2,
+    ### header3
+]
+
+第一步：获取第一个标题，令为 parent。
+
+parent = # header1
+
+[
+    # header1, &lt;- parent
+    ## header2,
+    ### header3,
+
+    # header1,
+    ## header2,
+    ### header3
+]
+
+第二步：从 parent 节点后一个节点开始，将连续比 parent 节点层级低的节点组成的列表令为 children。
+
+parent = # header1
+children = [
+    ## header2,
+    ### header3
+]
+
+[
+    # header1, &lt;- parent
+    ## header2, &lt;- children
+    ### header3, &lt;- children
+
+    # header1,
+    ## header2,
+    ### header3
+]
+
+第三步：对 children 重复本算法，并赋值给 parent.children 属性。
+
+parent = # header1
+children = [
+    ## header2,
+    ### header3
+]
+parent.children = 重复本算法(children)
+
+[
+    # header1, &lt;- parent
+    ## header2, &lt;- children
+    ### header3, &lt;- children
+
+    # header1,
+    ## header2,
+    ### header3
+]
+
+第四步：对剩余的节点组成的列表重复本算法。
+
+parent = # header1
+children = [
+    ## header2,
+    ### header3
+]
+parent.children = 重复本算法(children)
+剩余节点列表 = [
+    # header1,
+    ## header2,
+    ### header3
+]
+重复本算法(剩余节点列表)
+
+[
+    # header1, &lt;- parent
+    ## header2, &lt;- children
+    ### header3, &lt;- children
+
+    # header1, &lt;- 剩余节点
+    ## header2, &lt;- 剩余节点
+    ### header3 &lt;- 剩余节点
+]
+
+</code></pre>
+
+<p>代码如下：</p>
+
+<pre><code class="language-JavaScript">// result 用来缓存中间结果。
+const createIndex = (headers, result = []) =&gt; {
+    if (headers.length == 0) return result // 如果标题列表为空（已经把标题列表便利完了），则返回缓存的结果。
+    
+    // 第一步
+    const parent = headers[0];
+    
+    // 第二步
+    const children = headers.slice(
+        1,
+        headers
+            .slice(1)
+            .findIndex(header =&gt; header.level &lt;= parent.level) + 1 || headers.length
+    )
+    
+    // 第三步
+    parent.children = createIndex(children);
+    
+    // 第四步
+    return createIndex(
+        headers.slice(children.length + 1),
+        result.concat([parent])
+    )
+}
+</code></pre>
+
+<h2 id="toc_4">第三步、生成 Markdown 语法的嵌套结构目录树</h2>
+
+<p>在上一步中，我们已经得到了一个有层级关系树状结构的目录输了，这一部分相当于根据层级打印这个目录树。同样的，我们只需要打印一级，然后再通过递归的方式将答应函数运用到子树上就行了。经过上一个步骤的洗礼，我相信小伙伴理解这一步一定非常简单。</p>
+
+<pre><code class="language-JavaScript">const renderIndex = (index, numbered = false, indent = 4, indent_char = &#39; &#39;) =&gt;
+    index
+        .map(({ level, title, children }, i) =&gt; 
+            indent_char.repeat((level - 1) * indent)
+                + (numbered ? (i + 1) + &#39;. &#39; : &#39;* &#39;)
+                + `[${title}](#${title})`
+                + (children.length &gt; 0 ?  &#39;\n&#39; + renderIndex(children, numbered, indent, indent_char) : &#39;&#39;)
+        )
+        .join(&#39;\n&#39;)
+</code></pre>
+
+<h2 id="toc_5">其他骚操作</h2>
+
+<p>既然小伙伴们都看到这里了，那么聪明的你有没又发现你被坑了？如果没发现的话，请看下面一段代码。</p>
+
+<pre><code class="language-JavaScript">const renderHeaders = (headers, numbered = false, indent = 4, indent_char = &#39; &#39;) =&gt;
+    headers
+        .map(({ level, title }) =&gt;
+            indent_char.repeat((level - 1) * indent)
+            + (numbered ? (i + 1) + &#39;. &#39; : &#39;* &#39;)
+            + `[${title}](#${title})`)
+        .join(&#39;\n&#39;)
+</code></pre>
+
+<p>发现了没有，其实可以完全跳过第二步，直接打印出来的，哈哈哈哈。我只是单纯想拿这个例子讲递归而已啦，所以才会饶了那么打一个圈。</p>
+
+<p>上面讲了那么多递归，现在其实可以讲一讲非递归的实现方式。其实任何递归都可以用循环+栈进行替代，只不过相比递归的方式来说要复杂繁琐得多。递归在多数情况下都更接近数学上的美感。当然在这个例子中，循环+栈在处理一些非常深层级的大文件上面具有更好的性能。</p>
+
+<pre><code class="language-JavaScript">const createIndexByStack = _headers =&gt; {
+    // 预处理，并添加终止符, 用终止符强迫所有 header 出栈
+    const headers = _headers.concat([{level: 1}]).map(header =&gt; {
+        header.children = [];
+        return header;
+    })
+
+    const stack = []
+
+    // 构造 top 方法，方便获取栈顶
+    stack.top = () =&gt; stack[stack.length - 1] || null 
+
+    // 在栈低压入根节点
+    stack.push({ level: 0, children: [] })
+
+    for (const header of headers) {
+        while (header.level &lt;= stack.top().level) {
+            const child = stack.pop()
+            stack.top().children.push(child)
+        }
+        stack.push(header)
+    }
+
+    // 弹出终止符
+    stack.pop() 
+
+    // 弹出根节点结果
+    return stack.pop().children
+}
+</code></pre>
+
+<p>递归多是用自顶向下的分析方式，表达方式更形而上，更方便人的理解。而用循环+栈多是自底向上的分析方式，更繁琐而复杂，但是对计算机友好，往往也有更好的性能。</p>
+
+<h2 id="toc_6">后语</h2>
+
+<p>为了跟前言能够首尾呼应，我在这里写多一个后语。这是新博客第一篇技术分享类的文章，虽然讲的内容非常的简单，但是我个人还是非常满意的，我个人觉得核心的思想和细节都已经讲到为了，并且也提供了具体的代码实现，对没有什么耐心的我来说也是一种挑战吧。</p>
+
+<h2 id="toc_7">附：完整代码</h2>
+
+<pre><code class="language-JavaScript">const getHeaders = text =&gt;
+    text
+        .split(&#39;\n&#39;)
+        .map(line =&gt; line.match(/^(#+)[ \t]+(.*)$/))
+        .filter(header =&gt; header !== null)
+        .map(([, prefix, title]) =&gt; ({ level: prefix.length, title }))
+
+const createIndex = (headers, result = []) =&gt; {
+    if (headers.length == 0) return result
+    const parent = headers[0];
+    const children = headers.slice(
+        1,
+        headers
+            .slice(1)
+            .findIndex(header =&gt; header.level &lt;= parent.level) + 1 || headers.length
+    )
+    parent.children = createIndex(children);
+    return createIndex(
+        headers.slice(children.length + 1),
+        result.concat([parent])
+    )
+}
+
+const renderIndex = (index, numbered = false, indent = 4, indent_char = &#39; &#39;) =&gt;
+    index
+        .map(({ level, title, children }, i) =&gt; 
+            indent_char.repeat((level - 1) * indent)
+                + (numbered ? (i + 1) + &#39;. &#39; : &#39;* &#39;)
+                + `[${title}](#${title})`
+                + (children.length &gt; 0 ?  &#39;\n&#39; + renderIndex(children, numbered, indent, indent_char) : &#39;&#39;)
+        )
+        .join(&#39;\n&#39;)
+
+// ================ 测试 ==============
+const text = `
+# header1
+## header2
+### header3
+# header1
+## header2
+### header3
+`
+
+console.log(&#39;========== text ===========\n&#39;, text)
+const headers = getHeaders(text)
+console.log(&#39;========== headers ===========\n&#39;, headers)
+const index = createIndex(headers)
+console.log(&#39;========== index ===========\n&#39;, index)
+const markdown = renderIndex(index)
+console.log(&#39;========== markdown ===========\n&#39;, markdown)
+
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[博客这种东西，还是要写写的]]></title>
