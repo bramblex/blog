@@ -4,7 +4,7 @@
   <title><![CDATA[LoveAria.me]]></title>
   <link href="http://lovearia.me/atom.xml" rel="self"/>
   <link href="http://lovearia.me/"/>
-  <updated>2018-01-18T01:51:28+08:00</updated>
+  <updated>2018-01-22T03:56:08+08:00</updated>
   <id>http://lovearia.me/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -78,6 +78,8 @@
 <blockquote>
 <p>getHeaders 函数会提取出一个 Markdown 文件里面所有的标题信息，这个标题信息里面包含了标题的级数和标题内容。</p>
 </blockquote>
+
+<span id="more"></span><!-- more -->
 
 <h2 id="toc_3">第二步、生成目录树</h2>
 
