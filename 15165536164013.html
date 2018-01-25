@@ -171,7 +171,7 @@
 <li>最后将提取出来的字符整理成一个级数和标题的对象。</li>
 </ol>
 
-<pre><code class="language-JavaScript">const getHeaders = text =&gt;
+<pre><code class="language-javascript">const getHeaders = text =&gt;
     text
         .split(&#39;\n&#39;)
         .map(line =&gt; line.match(/^(#+)[ \t]+(.*)$/))
@@ -321,7 +321,7 @@ parent.children = 重复本算法(children)
 
 <p>代码如下：</p>
 
-<pre><code class="language-JavaScript">// result 用来缓存中间结果。
+<pre><code class="language-javascript">// result 用来缓存中间结果。
 const createIndex = (headers, result = []) =&gt; {
     if (headers.length == 0) return result // 如果标题列表为空（已经把标题列表便利完了），则返回缓存的结果。
     
@@ -351,7 +351,7 @@ const createIndex = (headers, result = []) =&gt; {
 
 <p>在上一步中，我们已经得到了一个有层级关系树状结构的目录输了，这一部分相当于根据层级打印这个目录树。同样的，我们只需要打印一级，然后再通过递归的方式将答应函数运用到子树上就行了。经过上一个步骤的洗礼，我相信小伙伴理解这一步一定非常简单。</p>
 
-<pre><code class="language-JavaScript">const renderIndex = (index, numbered = false, indent = 4, indent_char = &#39; &#39;) =&gt;
+<pre><code class="language-javascript">const renderIndex = (index, numbered = false, indent = 4, indent_char = &#39; &#39;) =&gt;
     index
         .map(({ level, title, children }, i) =&gt; 
             indent_char.repeat((level - 1) * indent)
@@ -366,7 +366,7 @@ const createIndex = (headers, result = []) =&gt; {
 
 <p>既然小伙伴们都看到这里了，那么聪明的你有没又发现你被坑了？如果没发现的话，请看下面一段代码。</p>
 
-<pre><code class="language-JavaScript">const renderHeaders = (headers, numbered = false, indent = 4, indent_char = &#39; &#39;) =&gt;
+<pre><code class="language-javascript">const renderHeaders = (headers, numbered = false, indent = 4, indent_char = &#39; &#39;) =&gt;
     headers
         .map(({ level, title }) =&gt;
             indent_char.repeat((level - 1) * indent)
@@ -379,7 +379,7 @@ const createIndex = (headers, result = []) =&gt; {
 
 <p>上面讲了那么多递归，现在其实可以讲一讲非递归的实现方式。其实任何递归都可以用循环+栈进行替代，只不过相比递归的方式来说要复杂繁琐得多。递归在多数情况下都更接近数学上的美感。当然在这个例子中，循环+栈在处理一些非常深层级的大文件上面具有更好的性能。</p>
 
-<pre><code class="language-JavaScript">const createIndexByStack = _headers =&gt; {
+<pre><code class="language-javascript">const createIndexByStack = _headers =&gt; {
     // 预处理，并添加终止符, 用终止符强迫所有 header 出栈
     const headers = _headers.concat([{level: 1}]).map(header =&gt; {
         header.children = [];
@@ -418,7 +418,7 @@ const createIndex = (headers, result = []) =&gt; {
 
 <h2 id="toc_7">附：完整代码</h2>
 
-<pre><code class="language-JavaScript">const getHeaders = text =&gt;
+<pre><code class="language-javascript">const getHeaders = text =&gt;
     text
         .split(&#39;\n&#39;)
         .map(line =&gt; line.match(/^(#+)[ \t]+(.*)$/))
